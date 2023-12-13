@@ -3,6 +3,36 @@ project:
   title: "starters"
   output-dir: docs
 
+website:
+  title: "GES 668 Starters"
+  description: "Starter and template collection for the GES 668 Building Spatial Datasets course at University of Maryland Baltimore County."
+  site-url: "https://bldgspatialdata.github.io/starters/"
+
+  repo-url: https://github.com/bldgspatialdata/starters
+  repo-actions: [edit, issue]
+
+  open-graph: true
+
+  navbar:
+    background: "#F5FFFF"
+    logo: images/logo.png
+    search: true
+    top:
+      - text: "About"
+        file: starters.qmd
+
+format:
+  html:
+    theme: zephyr
+    mainfont: "Atkinson Hyperlegible"
+    monofont: "Fira Code"
+    code-overflow: wrap
+    code-link: true
+    code-copy: true
+    code-tools: true
+    highlight-style: a11y
+    df-print: tibble
+
 editor: visual
 
 execute:
