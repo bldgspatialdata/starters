@@ -1,5 +1,9 @@
 project:
+  type: website
   title: "starters"
+  output-dir: docs
 
 editor: visual
 
+execute:
+  freeze: auto
