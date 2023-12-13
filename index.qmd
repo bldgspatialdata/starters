@@ -6,6 +6,11 @@ title: "About"
 
 This is a [Quarto](https://quarto.org) project repository of starter templates for the [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).
 
+Additional starters I plan to add include:
+
+- Making interactive maps with `{leaflet}` and `{mapview}`
+- Analyzing Census data with `{tidycensus}` and `{gt}`
+
 ## Presentation starters
 
 ### Final Project Presentation
@@ -19,7 +24,7 @@ usethis::use_github_file("bldgspatialdatasets/starters", "final-project-presenta
 
 ## Map starters
 
-### {rdeck} interactive map
+### Making interactive maps with `{rdeck}`
 
 Take [a look at the template](//rdeck-interactive-map.qmd) or download the starter using the following code:
 

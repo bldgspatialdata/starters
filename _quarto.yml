@@ -19,7 +19,7 @@ website:
     search: true
     top:
       - text: "About"
-        file: starters.qmd
+        file: index.qmd
 
 format:
   html:
