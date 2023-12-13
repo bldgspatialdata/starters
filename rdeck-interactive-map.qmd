@@ -1,10 +1,13 @@
 ---
-title: "Interactive Maps with `{rdeck}`"
+title: "Making interactive maps with `{rdeck}`"
 format:
   html:
     code-fold: true
 execute: 
   echo: true
+categories:
+  - mapping
+  - interactivity
 ---
 
 Run the following code in your course or project repository to download the {{< meta title >}} starter to your current working directory:
