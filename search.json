@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "rdeck-interactive-map.html",
+    "href": "rdeck-interactive-map.html",
+    "title": "Interactive Maps with {rdeck}",
+    "section": "",
+    "text": "Run the following code in your course or project repository to download the Interactive Maps with {rdeck} starter to your current working directory:\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"rdeck-interactive-map.qmd\")"
+  },
+  {
+    "objectID": "rdeck-interactive-map.html#setup",
+    "href": "rdeck-interactive-map.html#setup",
+    "title": "Interactive Maps with {rdeck}",
+    "section": "Setup",
+    "text": "Setup\nUsing this template requires the {rdeck} package which can be installed from GitHub:\n\npak::install_github(\"qfes/rdeck@*release\")\n\n\n\n\n\n\n\nSign up for a Mapbox account and get a token\n\n\n\nA Mapbox account and mapbox access token is required for Mapbox basemaps, with or without the Mapbox data service. See the {rdeck} documentation on mapbox_access_token for more information.\n\n\nThe template also uses the {tidycensus} and {sf} packages.\n\nlibrary(rdeck)\nlibrary(sf)\nlibrary(tidycensus)\n\noptions(tigris_use_cache = TRUE)"
+  },
+  {
+    "objectID": "rdeck-interactive-map.html#map",
+    "href": "rdeck-interactive-map.html#map",
+    "title": "Interactive Maps with {rdeck}",
+    "section": "Map",
+    "text": "Map\nThis template includes code cells downloading and preparing the data, a code cell for creating a rdeck map instance, and two example map code cell you can adapt. The initial code cell also uses the output: false to hide messages from the get_acs() function.\n\n\nDownload ACS data and prepare data for mapping\n# Download data on population by Maryland county\nmd_population &lt;- get_acs(\"county\",\n  state = \"MD\",\n  table = \"B01003\",\n  geometry = TRUE\n)\n\n# Transform the data into a geodetic CRS (required by all rdeck layers)\nmd_population &lt;- st_transform(md_population, 4326)\n\n# Rename the geometry column (required by add_polygon_layer())\nmd_population &lt;- st_set_geometry(md_population, \"polygon\")\n\n# Download data on race/ethnic group population by Maryland county\nmd_race &lt;- get_acs(\"county\",\n  state = \"MD\",\n  variables = c(\n    \"White\" = \"B03002_003\",\n    \"Black\" = \"B03002_004\",\n    \"Latino\" = \"B03002_012\"\n  ),\n  geometry = TRUE\n)\n\n# Convert data into a dot density format\nmd_race_dot_density &lt;- md_race |&gt;\n  as_dot_density(\n    value = \"estimate\",\n    values_per_dot = 100,\n    group = \"variable\"\n  )\n\n# Transform the data into a geodetic CRS and rename the geometry column (required by all rdeck layers)\nmd_race_dot_density &lt;- st_transform(md_race_dot_density, 4326)\n\n# Rename the geometry column (required by add_scatterplot_layer())\nmd_race_dot_density &lt;- st_set_geometry(md_race_dot_density, \"position\")\n\n\n\n\nCreate light and dark rdeck map instances\n# Create a rdeck map instance using the Mapbox light and Mapbox dark themes\nmd_rdeck_light &lt;- rdeck(\n  map_style = mapbox_light(),\n  theme = \"kepler\",\n  initial_bounds = st_bbox(md_population),\n  height = 600\n)\n\nmd_rdeck_dark &lt;- rdeck(\n  map_style = mapbox_dark(),\n  theme = \"kepler\",\n  initial_bounds = st_bbox(md_population),\n  height = 600\n)\n\n\nBoth map code cells use the column: screen-inset-shaded option to make the map full width in an HTML output format. Learn more about how to modify the article layout in a Quarto document.\nThis first map uses the rdeck::add_polygon_layer() and rdeck::scale_color_linear(). Setting pickable = TRUE allows you to click on a polygon and see the fields supplied to the tooltip parameter.\n\n\nCreate a polygon layer map\nmd_rdeck_light |&gt;\n  add_polygon_layer(\n    name = \"Maryland counties\",\n    data = md_population,\n    opacity = 0.6,\n    get_fill_color = scale_color_linear(\n      estimate,\n      col_label = \"Population\"\n      ),\n    tooltip = c(NAME, GEOID, estimate),\n    pickable = TRUE\n  )\n\n\n\n\n\n\n\nThis second map uses the rdeck::add_scatterplot_layer() and rdeck::scale_color_category(). It also uses a custom palette for qualitative data created with the scales::brewer_pal() function from the {scales} package.\n\n\nCreate a scatterplot layer map\nmd_rdeck_dark |&gt;\n  add_scatterplot_layer(\n    name = \"Maryland residents (100 per dot)\",\n    data = md_race_dot_density,\n    radius_min_pixels = 0.75,\n    opacity = 0.6,\n    get_fill_color = scale_color_category(\n      variable,\n      palette = scales::brewer_pal(\"qual\"),\n      col_label = \"Race/ethnicity\"\n      )\n  )"
+  },
+  {
     "objectID": "final-project-presentation.html#using-this-template",
     "href": "final-project-presentation.html#using-this-template",
     "title": "GES668: Your Project Title",
@@ -32,7 +53,7 @@
     "href": "final-project-presentation.html#working-with-reveal.js-3",
     "title": "GES668: Your Project Title",
     "section": "Working with Reveal.js",
-    "text": "Working with Reveal.js\nThis slide includes a hidden code block and a custom footer. See the Quarto code cells reference for more information.\n\n\n\n\n\n\n\n\nAREA\nPERIMETER\nNAME\nFIPS\n\n\n\n\n0.114\n1.442\nAshe\n37009\n\n\n0.061\n1.231\nAlleghany\n37005\n\n\n0.143\n1.630\nSurry\n37171\n\n\n\n\n\n\n\n\nThis is an example of a custom footer."
+    "text": "Working with Reveal.js\nThis slide includes a hidden code block and a custom footer. See the Quarto code cells reference for more information.\n\n\n\n\n\n\n  \n    \n    \n      AREA\n      PERIMETER\n      NAME\n      FIPS\n    \n  \n  \n    0.114\n1.442\nAshe\n37009\n    0.061\n1.231\nAlleghany\n37005\n    0.143\n1.630\nSurry\n37171\n  \n  \n  \n\n\n\n\n\nThis is an example of a custom footer."
   },
   {
     "objectID": "final-project-presentation.html#overview",
@@ -86,15 +107,29 @@
   {
     "objectID": "starters.html",
     "href": "starters.html",
-    "title": "Starters",
+    "title": "About",
     "section": "",
-    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets.\n\n\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n\nMake sure to remove any instructions and background information about the Reveal.js presentation format from the template. Replace the placeholder information about the final project presentation with details, code, and images related to your own project."
+    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets."
   },
   {
     "objectID": "starters.html#about-building-spatial-datasets-starters",
     "href": "starters.html#about-building-spatial-datasets-starters",
-    "title": "Starters",
+    "title": "About",
     "section": "",
-    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets.\n\n\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n\nMake sure to remove any instructions and background information about the Reveal.js presentation format from the template. Replace the placeholder information about the final project presentation with details, code, and images related to your own project."
+    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets."
+  },
+  {
+    "objectID": "starters.html#presentation-starters",
+    "href": "starters.html#presentation-starters",
+    "title": "About",
+    "section": "Presentation starters",
+    "text": "Presentation starters\n\nFinal Project Presentation\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")"
+  },
+  {
+    "objectID": "starters.html#map-starters",
+    "href": "starters.html#map-starters",
+    "title": "About",
+    "section": "Map starters",
+    "text": "Map starters\n\n{rdeck} interactive map\nTake a look at the template or download the starter using the following code:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"rdeck-interactive-map.qmd\")"
   }
 ]
