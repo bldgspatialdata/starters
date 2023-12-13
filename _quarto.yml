@@ -1,7 +1,7 @@
 project:
   type: website
   title: "starters"
-  output-dir: docs
+  output-dir: "_site"
 
 website:
   title: "GES 668 Starters"

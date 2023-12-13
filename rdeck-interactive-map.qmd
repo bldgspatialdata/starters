@@ -15,7 +15,7 @@ Run the following code in your course or project repository to download the {{< 
 ```{r}
 #| eval: false
 #| code-fold: false
-usethis::use_github_file("bldgspatialdatasets/starters", "rdeck-interactive-map.qmd")
+usethis::use_github_file("bldgspatialdata/starters", "rdeck-interactive-map.qmd")
 ```
 
 ## Setup
