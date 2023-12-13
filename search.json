@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "final-project-presentation.html#using-this-template",
+    "href": "final-project-presentation.html#using-this-template",
+    "title": "GES668: Your Project Title",
+    "section": "Using this template",
+    "text": "Using this template\n\n\n\n\n\n\nHow to use this template\n\n\nThis template is based on the the GES 668 Final Project instructions. You should replace the questions or other instructions in this template with your own writing about the project. Link to your project README or other files in your repository to provide more detailed information where appropriate."
+  },
+  {
+    "objectID": "final-project-presentation.html#working-with-reveal.js",
+    "href": "final-project-presentation.html#working-with-reveal.js",
+    "title": "GES668: Your Project Title",
+    "section": "Working with Reveal.js",
+    "text": "Working with Reveal.js\n\n\n\n\n\n\nRemove this slide\n\n\nThis slide and the next three slides should be removed. They are only provided as a reference for working with Reveal.js presentation format in Quarto. Check the full list of options for the Reveal.js presentation format in Quarto for more detailed information."
+  },
+  {
+    "objectID": "final-project-presentation.html#working-with-reveal.js-1",
+    "href": "final-project-presentation.html#working-with-reveal.js-1",
+    "title": "GES668: Your Project Title",
+    "section": "Working with Reveal.js",
+    "text": "Working with Reveal.js\nThis slide includes a captioned image inserted with Markdown formatting.\n\nBuilding Spatial Datasets Course logo"
+  },
+  {
+    "objectID": "final-project-presentation.html#working-with-reveal.js-2",
+    "href": "final-project-presentation.html#working-with-reveal.js-2",
+    "title": "GES668: Your Project Title",
+    "section": "Working with Reveal.js",
+    "text": "Working with Reveal.js\nThis slide includes a code block and presentation notes.\n\nlibrary(sf)\nlibrary(ggplot2)\n\nnc &lt;- st_read(system.file(\"shape/nc.shp\", package=\"sf\"))\n\nReading layer `nc' from data source \n  `/Users/elipousson/Library/R/arm64/4.3/library/sf/shape/nc.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 100 features and 14 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965\nGeodetic CRS:  NAD27\n\nggplot() +\n  geom_sf(data = nc, aes(fill = NAME)) +\n  guides(fill = \"none\")\n\n\n\nThis is an example of how you add in presentation notes."
+  },
+  {
+    "objectID": "final-project-presentation.html#working-with-reveal.js-3",
+    "href": "final-project-presentation.html#working-with-reveal.js-3",
+    "title": "GES668: Your Project Title",
+    "section": "Working with Reveal.js",
+    "text": "Working with Reveal.js\nThis slide includes a hidden code block and a custom footer. See the Quarto code cells reference for more information.\n\n\n\n\n\n\n\n\nAREA\nPERIMETER\nNAME\nFIPS\n\n\n\n\n0.114\n1.442\nAshe\n37009\n\n\n0.061\n1.231\nAlleghany\n37005\n\n\n0.143\n1.630\nSurry\n37171\n\n\n\n\n\n\n\n\nThis is an example of a custom footer."
+  },
+  {
+    "objectID": "final-project-presentation.html#overview",
+    "href": "final-project-presentation.html#overview",
+    "title": "GES668: Your Project Title",
+    "section": "Overview",
+    "text": "Overview\n\nBrief summary description of the project"
+  },
+  {
+    "objectID": "final-project-presentation.html#project-goals",
+    "href": "final-project-presentation.html#project-goals",
+    "title": "GES668: Your Project Title",
+    "section": "Project goals",
+    "text": "Project goals\n\nWhat were your initial goals for the project?\nHow did they change or develop as you worked on your project?"
+  },
+  {
+    "objectID": "final-project-presentation.html#data-sources",
+    "href": "final-project-presentation.html#data-sources",
+    "title": "GES668: Your Project Title",
+    "section": "Data sources",
+    "text": "Data sources\nMore than one slide per data source is likely required for this section and basic information on each major data source used in your project. Make sure to answer:\n\nWhat data sources did you use?\nHow, why, and where were they created?"
+  },
+  {
+    "objectID": "final-project-presentation.html#approach-and-methods-for-working-with-data",
+    "href": "final-project-presentation.html#approach-and-methods-for-working-with-data",
+    "title": "GES668: Your Project Title",
+    "section": "Approach and methods for working with data",
+    "text": "Approach and methods for working with data\nBriefly recap related information from your initial project proposal describing your approach. Make sure to answer:\n\nDid your approach involve mapping, exploratory analysis, documentation, visualization, or a combination of multiple approaches?\nWhy did you select this approach and did you change apporach while completing your final project?\nWhat packages, templates, or other resources did you use in creating your final project?"
+  },
+  {
+    "objectID": "final-project-presentation.html#challenges-in-working-with-data",
+    "href": "final-project-presentation.html#challenges-in-working-with-data",
+    "title": "GES668: Your Project Title",
+    "section": "Challenges in working with data",
+    "text": "Challenges in working with data\nWhat challenges did you encounter in making use of these resources and this data?\nChallenges can be practical, e.g. “Difficulty identifying which key-value pairs needed to query OpenStreetMap data,” or conceptual, e.g. “Unsure appropriate level of geographical analysis to support a robust analysis.”"
+  },
+  {
+    "objectID": "final-project-presentation.html#successes-in-working-with-data",
+    "href": "final-project-presentation.html#successes-in-working-with-data",
+    "title": "GES668: Your Project Title",
+    "section": "Successes in working with data",
+    "text": "Successes in working with data\nWhat do you think your project does well?\nYour areas of success likely depend on your approach:\n\nIf you completed a data analysis, what are your key findings?\nIf you created a map, what does it communicate to people who see it?"
+  },
+  {
+    "objectID": "final-project-presentation.html#where-to-learn-more",
+    "href": "final-project-presentation.html#where-to-learn-more",
+    "title": "GES668: Your Project Title",
+    "section": "Where to learn more",
+    "text": "Where to learn more\n\nAdd links or brief descriptions of how to find the required elements for your project repository.\n\nproject data\n\nsource files or a script used for importing and processing the data before visualization or analysis. Students who are using {osmdata} or {tidycensus} should include scripts for downloading data.\n\nproject code\n\nany R scripts, RMarkdown, or Quarto files used to read, tidy, transform, analyze, visualize or map the selected data.\n\noutput files\n\nincluding any processed data files or rendered PDF or HTML documents.\n\nREADME\n\na public-facing summary of the project explaining your process for processing the data and any relevant information another person may need to work with the data or your code.\n\n\nThese can be placeholder links as you still have time to complete the final project and some elements may be incomplete.\n\n\nThis slide uses a fit-text div to make sure the text fits on a single slide. Learn more about Advanced Reveal features in the Quarto documentation."
+  },
+  {
+    "objectID": "starters.html",
+    "href": "starters.html",
+    "title": "Starters",
+    "section": "",
+    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets.\n\n\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n\nMake sure to remove any instructions and background information about the Reveal.js presentation format from the template. Replace the placeholder information about the final project presentation with details, code, and images related to your own project."
+  },
+  {
+    "objectID": "starters.html#about-building-spatial-datasets-starters",
+    "href": "starters.html#about-building-spatial-datasets-starters",
+    "title": "Starters",
+    "section": "",
+    "text": "This is a Quarto project repository of starter templates for the GES668: Building Spatial Datasets.\n\n\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n\nMake sure to remove any instructions and background information about the Reveal.js presentation format from the template. Replace the placeholder information about the final project presentation with details, code, and images related to your own project."
+  }
+]
