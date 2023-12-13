@@ -1,18 +1,29 @@
 ---
-title: "Starters"
+title: "About"
 ---
 
 ## About Building Spatial Datasets starters
 
 This is a [Quarto](https://quarto.org) project repository of starter templates for the [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).
 
+## Presentation starters
+
 ### Final Project Presentation
 
-Run the following code in your course repository to download the final presentation template to your current working directory:
+Run the following code in your course repository to download the [final presentation template](//final-project-presentation.qmd) to your current working directory:
 
 ```{r}
 #| eval: false
 usethis::use_github_file("bldgspatialdatasets/starters", "final-project-presentation.qmd")
 ```
 
-Make sure to remove any instructions and background information about the [Reveal.js presentation format](https://quarto.org/docs/presentations/revealjs/) from the template. Replace the placeholder information about the [final project presentation](https://bldgspatialdata.github.io/website/final-project.html) with details, code, and images related to your own project.
+## Map starters
+
+### {rdeck} interactive map
+
+Take [a look at the template](//rdeck-interactive-map.qmd) or download the starter using the following code:
+
+```{r}
+#| eval: false
+usethis::use_github_file("bldgspatialdatasets/starters", "rdeck-interactive-map.qmd")
+```
