@@ -4,7 +4,7 @@
     "href": "rdeck-interactive-map.html",
     "title": "Making interactive maps with {rdeck}",
     "section": "",
-    "text": "Run the following code in your course or project repository to download the Making interactive maps with {rdeck} starter to your current working directory:\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"rdeck-interactive-map.qmd\")"
+    "text": "Run the following code in your course or project repository to download the Making interactive maps with {rdeck} starter to your current working directory:\nusethis::use_github_file(\"bldgspatialdata/starters\", \"rdeck-interactive-map.qmd\")"
   },
   {
     "objectID": "rdeck-interactive-map.html#setup",
@@ -39,14 +39,14 @@
     "href": "index.html#presentation-starters",
     "title": "About",
     "section": "Presentation starters",
-    "text": "Presentation starters\n\nFinal Project Presentation\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")"
+    "text": "Presentation starters\n\nFinal Project Presentation\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\nusethis::use_github_file(\"bldgspatialdata/starters\", \"final-project-presentation.qmd\")"
   },
   {
     "objectID": "index.html#map-starters",
     "href": "index.html#map-starters",
     "title": "About",
     "section": "Map starters",
-    "text": "Map starters\n\nMaking interactive maps with {rdeck}\nTake a look at the template or download the starter using the following code:\n\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"rdeck-interactive-map.qmd\")"
+    "text": "Map starters\n\nMaking interactive maps with {rdeck}\nTake a look at the template or download the starter using the following code:\n\nusethis::use_github_file(\"bldgspatialdata/starters\", \"rdeck-interactive-map.qmd\")"
   },
   {
     "objectID": "final-project-presentation.html#using-this-template",
