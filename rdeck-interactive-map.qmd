@@ -1,0 +1,150 @@
+---
+title: "Interactive Maps with `{rdeck}`"
+format:
+  html:
+    code-fold: true
+execute: 
+  echo: true
+---
+
+Run the following code in your course or project repository to download the {{< meta title >}} starter to your current working directory:
+
+```{r}
+#| eval: false
+#| code-fold: false
+usethis::use_github_file("bldgspatialdatasets/starters", "rdeck-interactive-map.qmd")
+```
+
+## Setup
+
+Using this template requires the `{rdeck}` package which can be installed from GitHub:
+
+```{r}
+#| eval: false
+#| code-fold: false
+pak::install_github("qfes/rdeck@*release")
+```
+
+:::{.callout-important appearance='simple' icon=true}
+## Sign up for a Mapbox account and get a token
+A [Mapbox account](https://account.mapbox.com/auth/signup) and [mapbox access token](https://docs.mapbox.com/help/glossary/access-token) is required for Mapbox basemaps, with or without the Mapbox data service. See the `{rdeck}` documentation on [`mapbox_access_token`](https://qfes.github.io/rdeck/reference/mapbox_access_token.html) for more information.
+:::
+
+The template also uses the `{tidycensus}` and `{sf}` packages.
+
+```{r}
+#| label: setup
+#| code-fold: false
+#| output: false
+library(rdeck)
+library(sf)
+library(tidycensus)
+
+options(tigris_use_cache = TRUE)
+```
+
+## Map
+
+This template includes code cells downloading and preparing the data, a code cell for creating a rdeck map instance, and two example map code cell you can adapt. The initial code cell also uses the `output: false` to hide messages from the `get_acs()` function.
+
+```{r}
+#| code-summary: Download ACS data and prepare data for mapping
+#| output: false
+
+# Download data on population by Maryland county
+md_population <- get_acs("county",
+  state = "MD",
+  table = "B01003",
+  geometry = TRUE
+)
+
+# Transform the data into a geodetic CRS (required by all rdeck layers)
+md_population <- st_transform(md_population, 4326)
+
+# Rename the geometry column (required by add_polygon_layer())
+md_population <- st_set_geometry(md_population, "polygon")
+
+# Download data on race/ethnic group population by Maryland county
+md_race <- get_acs("county",
+  state = "MD",
+  variables = c(
+    "White" = "B03002_003",
+    "Black" = "B03002_004",
+    "Latino" = "B03002_012"
+  ),
+  geometry = TRUE
+)
+
+# Convert data into a dot density format
+md_race_dot_density <- md_race |>
+  as_dot_density(
+    value = "estimate",
+    values_per_dot = 100,
+    group = "variable"
+  )
+
+# Transform the data into a geodetic CRS and rename the geometry column (required by all rdeck layers)
+md_race_dot_density <- st_transform(md_race_dot_density, 4326)
+
+# Rename the geometry column (required by add_scatterplot_layer())
+md_race_dot_density <- st_set_geometry(md_race_dot_density, "position")
+```
+
+```{r}
+#| code-summary: Create light and dark rdeck map instances
+
+# Create a rdeck map instance using the Mapbox light and Mapbox dark themes
+md_rdeck_light <- rdeck(
+  map_style = mapbox_light(),
+  theme = "kepler",
+  initial_bounds = st_bbox(md_population),
+  height = 600
+)
+
+md_rdeck_dark <- rdeck(
+  map_style = mapbox_dark(),
+  theme = "kepler",
+  initial_bounds = st_bbox(md_population),
+  height = 600
+)
+```
+
+Both map code cells use the `column: screen-inset-shaded` option to make the map full width in an HTML output format. Learn more about how to modify the [article layout in a Quarto document](https://quarto.org/docs/authoring/article-layout.html).
+
+This first map uses the `rdeck::add_polygon_layer()` and `rdeck::scale_color_linear()`. Setting `pickable = TRUE` allows you to click on a polygon and see the fields supplied to the `tooltip` parameter.
+
+```{r}
+#| code-summary: Create a polygon layer map
+#| column: screen-inset-shaded
+md_rdeck_light |>
+  add_polygon_layer(
+    name = "Maryland counties",
+    data = md_population,
+    opacity = 0.6,
+    get_fill_color = scale_color_linear(
+      estimate,
+      col_label = "Population"
+      ),
+    tooltip = c(NAME, GEOID, estimate),
+    pickable = TRUE
+  )
+```
+
+This second map uses the `rdeck::add_scatterplot_layer()` and `rdeck::scale_color_category()`. It also uses a custom palette for qualitative data created with the `scales::brewer_pal()` function from the `{scales}` package.
+ 
+```{r}
+#| code-summary: Create a scatterplot layer map
+#| column: screen-inset-shaded
+md_rdeck_dark |>
+  add_scatterplot_layer(
+    name = "Maryland residents (100 per dot)",
+    data = md_race_dot_density,
+    radius_min_pixels = 0.75,
+    opacity = 0.6,
+    get_fill_color = scale_color_category(
+      variable,
+      palette = scales::brewer_pal("qual"),
+      col_label = "Race/ethnicity"
+      )
+  )
+```

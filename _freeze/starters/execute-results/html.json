@@ -1,8 +1,8 @@
 {
-  "hash": "4a687fd62afb7fa545722393ff9f20b5",
+  "hash": "54685a6f789c05df1ce2cc8d56850c54",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Starters\"\n---\n\n\n## About Building Spatial Datasets starters\n\nThis is a [Quarto](https://quarto.org) project repository of starter templates for the [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).\n\n### Final Project Presentation\n\nRun the following code in your course repository to download the final presentation template to your current working directory:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n```\n:::\n\n\nMake sure to remove any instructions and background information about the [Reveal.js presentation format](https://quarto.org/docs/presentations/revealjs/) from the template. Replace the placeholder information about the [final project presentation](https://bldgspatialdata.github.io/website/final-project.html) with details, code, and images related to your own project.\n",
+    "markdown": "---\ntitle: \"About\"\n---\n\n\n## About Building Spatial Datasets starters\n\nThis is a [Quarto](https://quarto.org) project repository of starter templates for the [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).\n\n## Presentation starters\n\n### Final Project Presentation\n\nRun the following code in your course repository to download the [final presentation template](//final-project-presentation.qmd) to your current working directory:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"final-project-presentation.qmd\")\n```\n:::\n\n\n## Map starters\n\n### {rdeck} interactive map\n\nTake [a look at the template](//rdeck-interactive-map.qmd) or download the starter using the following code:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nusethis::use_github_file(\"bldgspatialdatasets/starters\", \"rdeck-interactive-map.qmd\")\n```\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

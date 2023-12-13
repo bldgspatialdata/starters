@@ -1,0 +1,6 @@
+:::{.callout-tip collapse=false appearance='default' icon=true}
+## Installing R packages from GitHub
+
+Installing R packages from GitHub requires you to have [Rtools43 for Windows](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html) or [Xcode for OSX](https://developer.apple.com/xcode/resources/). The easiest way to install these requirements is to use the [Choclately package manager](https://chocolatey.org/install) to [install Rtools](https://community.chocolatey.org/packages/rtools) for Windows or install the [Homebrew package manager](https://brew.sh/) on OSX (which installs the Xcode command line tools at the same time - see [this post for more information](https://www.moncefbelyamani.com/how-to-install-xcode-with-homebrew/)).
+
+:::
