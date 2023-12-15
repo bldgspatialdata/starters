@@ -46,68 +46,87 @@ library(tidycensus)
 options(tigris_use_cache = TRUE)
 ```
 
+To customize this starter template, try:
+
+- Changing the state or geography
+- Changing the variables
+- Changing the values per dot for the dot density map
+
 ## Map
 
 This template includes code cells downloading and preparing the data, a code cell for creating a rdeck map instance, and two example map code cell you can adapt. The initial code cell also uses the `output: false` to hide messages from the `get_acs()` function.
 
 ```{r}
+#| code-summary: Set parameters for data and maps
+
+state <- "MD"
+
+population_table <-  "B01003"
+
+race_variables <- c(
+    "White" = "B03002_003",
+    "Black" = "B03002_004",
+    "Latino" = "B03002_012"
+  )
+
+values_per_dot <- 100
+```
+
+
+```{r}
 #| code-summary: Download ACS data and prepare data for mapping
 #| output: false
 
-# Download data on population by Maryland county
-md_population <- get_acs("county",
-  state = "MD",
-  table = "B01003",
+# Download data on population by county
+population <- get_acs("county",
+  state = state,
+  table = population_table,
   geometry = TRUE
 )
 
 # Transform the data into a geodetic CRS (required by all rdeck layers)
-md_population <- st_transform(md_population, 4326)
+population <- st_transform(population, 4326)
 
 # Rename the geometry column (required by add_polygon_layer())
-md_population <- st_set_geometry(md_population, "polygon")
+population <- st_set_geometry(population, "polygon")
 
-# Download data on race/ethnic group population by Maryland county
-md_race <- get_acs("county",
-  state = "MD",
-  variables = c(
-    "White" = "B03002_003",
-    "Black" = "B03002_004",
-    "Latino" = "B03002_012"
-  ),
+# Download data on race/ethnic group population by county
+race <- get_acs("county",
+  state = state,
+  variables = race_variables,
   geometry = TRUE
 )
 
 # Convert data into a dot density format
-md_race_dot_density <- md_race |>
+race_dot_density <- race |>
   as_dot_density(
     value = "estimate",
-    values_per_dot = 100,
+    values_per_dot = values_per_dot,
     group = "variable"
   )
 
 # Transform the data into a geodetic CRS and rename the geometry column (required by all rdeck layers)
-md_race_dot_density <- st_transform(md_race_dot_density, 4326)
+race_dot_density <- st_transform(race_dot_density, 4326)
 
 # Rename the geometry column (required by add_scatterplot_layer())
-md_race_dot_density <- st_set_geometry(md_race_dot_density, "position")
+race_dot_density <- st_set_geometry(race_dot_density, "position")
 ```
 
 ```{r}
 #| code-summary: Create light and dark rdeck map instances
 
 # Create a rdeck map instance using the Mapbox light and Mapbox dark themes
-md_rdeck_light <- rdeck(
+rdeck_light <- rdeck(
   map_style = mapbox_light(),
   theme = "kepler",
-  initial_bounds = st_bbox(md_population),
+  initial_bounds = st_bbox(population),
   height = 600
 )
 
-md_rdeck_dark <- rdeck(
+rdeck_dark <- rdeck(
   map_style = mapbox_dark(),
   theme = "kepler",
-  initial_bounds = st_bbox(md_population),
+  initial_bounds = st_bbox(population),
   height = 600
 )
 ```
@@ -119,10 +138,10 @@ This first map uses the `rdeck::add_polygon_layer()` and `rdeck::scale_color_lin
 ```{r}
 #| code-summary: Create a polygon layer map
 #| column: screen-inset-shaded
-md_rdeck_light |>
+rdeck_light |>
   add_polygon_layer(
-    name = "Maryland counties",
-    data = md_population,
+    name = "Residents by county",
+    data = population,
     opacity = 0.6,
     get_fill_color = scale_color_linear(
       estimate,
@@ -138,11 +157,13 @@ This second map uses the `rdeck::add_scatterplot_layer()` and `rdeck::scale_colo
 ```{r}
 #| code-summary: Create a scatterplot layer map
 #| column: screen-inset-shaded
-md_rdeck_dark |>
+rdeck_dark |>
   add_scatterplot_layer(
-    name = "Maryland residents (100 per dot)",
-    data = md_race_dot_density,
-    radius_min_pixels = 0.75,
+    name = "Population by race/ethnicity (100 per dot)",
+    data = race_dot_density,
+    radius_min_pixels = 1,
+    radius_max_pixels = 5,
+    radius_scale = 5,
     opacity = 0.6,
     get_fill_color = scale_color_category(
       variable,
