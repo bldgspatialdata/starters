@@ -23,7 +23,7 @@ website:
 
 format:
   html:
-    theme: zephyr
+    theme: [zephyr, theme.scss]
     mainfont: "Atkinson Hyperlegible"
     monofont: "Fira Code"
     code-overflow: wrap
