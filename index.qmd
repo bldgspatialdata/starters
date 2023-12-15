@@ -4,12 +4,15 @@ title: "About"
 
 ## About Building Spatial Datasets starters
 
-This is a [Quarto](https://quarto.org) project repository of starter templates for the [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).
+This project is a repository of starter templates for students in the UMBC course [GES668: Building Spatial Datasets](https://bldgspatialdata.github.io/website).
 
-Additional starters I plan to add include:
+Here are a few more starters I plan to add:
 
-- Making interactive maps with `{leaflet}` and `{mapview}`
-- Analyzing Census data with `{tidycensus}` and `{gt}`
+-   Making interactive maps with `{leaflet}` and `{mapview}`
+-   Analyzing Census data with `{tidycensus}` and `{gt}`
+-   Writing a README file for a dataset, analysis, or package
+
+Suggest ideas for other starters or templates by opening an issue in the [project GitHub repository](https://github.com/bldgspatialdata/starters).
 
 ## Presentation starters
 
