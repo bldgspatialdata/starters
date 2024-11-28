@@ -10,11 +10,19 @@ Here are a few more starters I plan to add:
 
 -   Making interactive maps with `{leaflet}` and `{mapview}`
 -   Analyzing Census data with `{tidycensus}` and `{gt}`
--   Writing a README file for a dataset, analysis, or package
 
 Suggest ideas for other starters or templates by opening an issue in the [project GitHub repository](https://github.com/bldgspatialdata/starters).
 
 ## Presentation starters
+
+### Final Project README
+
+Run the following code in your project repository to download the [final project README template](//README.md) to your current working directory:
+
+```{r}
+#| eval: false
+usethis::use_github_file("bldgspatialdata/starters", "README.md")
+```
 
 ### Final Project Presentation
 
