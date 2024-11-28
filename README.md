@@ -14,14 +14,14 @@ For data analysis projects, here are a few key elements to consider including in
 
 Please add a license to your repository and your README with `usethis::use_mit_license()` or another [usethis license function](https://usethis.r-lib.org/reference/licenses.html).
 
-```{r}
+```{r, eval=FALSE}
 # Use this to a MIT License to a project 
 usethis::use_mit_license()
 ```
 
 This template is a plain Markdown file. You can alternatively create a README using a RMarkdown file or a Quarto document that you render to a [GitHub Flavored Markdown](https://quarto.org/docs/output-formats/gfm.html) (GFM) document.
 
-```{r}
+```{r, eval=FALSE}
 # Use rmarkdown to render a Rmd README file
 rmarkdown::render("README.Rmd", output_format = "md_document")
 
